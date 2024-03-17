@@ -1,3 +1,3 @@
-# Game
+# Joel Rosales
 
-Joel Rosales 25325/6
+ 25325/6
