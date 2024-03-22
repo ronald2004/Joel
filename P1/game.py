@@ -4,13 +4,57 @@ words = ["python", "programación", "computadora", "código", "desarrollo",
 "inteligencia"]
 # Elegir una palabra al azar
 secret_word = random.choice(words)
-# Número máximo de intentos permitidos
+# Número máximo de fallos permitidos
 max_f = 10
 # Lista para almacenar las letras adivinadas
 guessed_letters = []
+
+def esvocal(letra):
+    vocales = "aeiou"
+    return letra in vocales
+
+def facil():
+    word = ""
+    for letra in secret_word:
+        if (esvocal(letra)):
+            word += letra
+        else:
+            word += "_"
+    return word
+
+def medio():
+    return secret_word[0]+ "_" * (len(secret_word) - 2) + secret_word[-1]
+
+def dificil():
+    return "_" * len(secret_word)
+
 print("¡Bienvenido al juego de adivinanzas!")
+
+print(""" 
+--Seleccione una Dificultad--
+Facil: Se muestran una vez todas las vocales.
+Medio: Se muestra una vez la primera y la ultima letra de la palabra.
+Dificil: No se muestra ninguna letra.
+    """)
+
+#seleccion de dificultad
+while True:
+    dificultad = input("..: ").lower()
+    if (dificultad == "facil"):
+        word_displayed = facil()
+        break
+    elif (dificultad == "medio"):
+        word_displayed = medio()
+        break
+    elif (dificultad == "dificil"):
+        word_displayed = dificil()
+        break
+    else:
+        print("Opcion invalida. Intenta de nuevo")
+    
+
 print("Estoy pensando en una palabra. ¿Puedes adivinar cuál es?")
-word_displayed = "_" * len(secret_word)
+
 # Mostrarla palabra parcialmente adivinada
 print(f"Palabra: {word_displayed}")
 #contador
